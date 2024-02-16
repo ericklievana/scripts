@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# This script changes the different codes for xmodmap to
+# enable spanish letters and symbols
+
+readonly xmodmapFile="$XDG_CONFIG_HOME/x11/xmodmap"
+
+rm -rf "$xmodmapFile"
+
+xmodmap -pke > "$xmodmapFile"
+
+
+declare -ar patterns=(
+		'a A a A/a A aacute Aacute'
+		'e E e E/e E eacute Eacute'
+		'i I i I/i I iacute Iacute'
+		'o O o O/o O oacute Oacute'
+		'u U u U/u U uacute Uacute'
+		'n N n N/n N ntilde Ntilde'
+		'slash question slash question/slash question slash questiondown'
+		'1 exclam 1 exclam/1 exclam 1 exclamdown'
+		'Alt_R Meta_R Alt_R Meta_R/Mode_switch'
+		)
+
+for pattern in "${patterns[@]}"; do
+	sed --quiet "s/$pattern/p" "$xmodmapFile"
+	sed -i "s/$pattern/" "$xmodmapFile"
+done
