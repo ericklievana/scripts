@@ -1,0 +1,29 @@
+#!/bin/sh
+#Instructions
+#https://www.atlassian.com/git/tutorials/dotfiles
+#create alias
+alias config="/usr/bin/git --git-dir=$HOME/.config/repo/ --work-tree=$HOME"
+#clone bare repo
+git clone --bare https://github.com/ericklievana/config.git $HOME/.config/repo
+#Delete posible conflicts
+rm -f $HOME/.bashrc $HOME/.bash_profile $HOME/.pam_environment
+#make dirs
+mkdir -p $HOME/.local/share
+mkdir -p $HOME/.local/share/bash
+touch $HOME/.local/share/bash/history
+mkdir -p $HOME/.local/cache
+mkdir -p $HOME/.local/programs
+#youtube api from google console developers
+mkdir -p $HOME/.local/apis
+mkdir -p $HOME/downloads
+mkdir -p $HOME/files
+mkdir -p $HOME/music
+mkdir -p $HOME/pictures
+mkdir -p $HOME/templates
+mkdir -p $HOME/videos
+mkdir -p $HOME/programs
+mkdir -p $HOME/pictures/screenshots
+#config checkout
+config checkout
+#hide untracked files
+config config --local status.showUntrackedFiles no
