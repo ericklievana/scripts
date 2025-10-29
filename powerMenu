@@ -1,0 +1,21 @@
+#!/bin/sh
+
+
+RESULT=$(printf "%s\n" "󰐥 Poweroff" " Reboot" " Close session" \
+  | dmenu -i -p "Choose an option" -l 3 )
+
+echo "$RESULT"
+
+case "$RESULT" in
+  ' Reboot')
+    systemctl reboot
+    ;;
+  '󰐥 Poweroff')
+    systemctl poweroff
+    ;;
+  ' Close session')
+    ;;
+  *)
+    exit 0
+    ;;
+esac
