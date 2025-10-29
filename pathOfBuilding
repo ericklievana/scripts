@@ -1,0 +1,3 @@
+#!/bin/sh
+
+wine "/home/darkskoll/programs/pob/Path of Building Community/Path of Building.exe"
