@@ -1,0 +1,9 @@
+#!/bin/sh
+
+PROGRAMS="$HOME/.bin/programs"
+
+SELECTION=$(dmenu -p 'Launcher:' -l -1 < "$PROGRAMS")
+
+SELECTION=$(echo "$SELECTION" | cut -d ' ' -f 2)
+
+exec "$SELECTION"
