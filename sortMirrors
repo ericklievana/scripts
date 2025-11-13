@@ -1,0 +1,13 @@
+#!/bin/sh
+
+MIRRORLIST="/etc/pacman.d/mirrorlist"
+
+if [ -f "$MIRRORLIST" ]; then
+  rm -rf "$MIRRORLIST"
+fi
+
+reflector --verbose --latest 100 --sort rate --save "$MIRRORLIST.bk"
+
+rankmirrors -n 10 "$MIRRORLIST.bk" > "$MIRRORLIST"
+
+rm -rf "$MIRRORLIST.bk"
