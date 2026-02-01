@@ -1,0 +1,13 @@
+#!/bin/bash
+
+startDate="13-January-2025"
+monday="$startDate"
+endDate="19-December-2025"
+friday="$startDate"
+
+while [[ "$friday" != "$endDate" ]]; do
+  printf "%s al " "$monday"
+  friday=$(date --date="$monday + 4 days" +"%d-%B-%Y")
+  printf "%s\n" "$friday"
+  monday=$(date --date="$monday + 7 days" +"%d-%B-%Y")
+done
