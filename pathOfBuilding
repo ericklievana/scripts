@@ -1,3 +1,2 @@
 #!/bin/sh
-
-rusty-path-of-building poe1
+wine "/home/darkskoll/.local/share/wine/default/drive_c/users/darkskoll/AppData/Roaming/Path of Building Community/Path of Building.exe"
