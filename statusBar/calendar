@@ -1,0 +1,18 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+  1)
+    dunstctl close-all
+    month="$(date '+%d %B %Y')"
+    dates="$(cal | sed -e '1d' -e '$d')"
+
+    notify-send \
+      -h string:bgcolor:"$(xrdb -get background)" \
+      -h string:fgcolor:"$(xrdb -get foreground)" \
+      -h string:frcolor:"$(xrdb -get foreground)" \
+      "    $month" \
+      "$dates"
+    ;;
+esac
+
+printf "%s" "$(date '+󰥔 %H:%M %p')"
