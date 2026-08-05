@@ -1,0 +1,5 @@
+#!/bin/sh
+
+DIGITAL="$HOME/repos/Digital/Digital.jar"
+
+java -jar "$DIGITAL"
