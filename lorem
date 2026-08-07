@@ -1,3 +1,7 @@
 #!/bin/sh
 
-# https://lorem-api.com/api/lorem?paragraphs=2&seed=foo
+API="https://lorem-api.com/api/lorem?paragraphs={{PARAGRAPH}}"
+
+AMOUNT=$(printf "%s\n" $(seq 1 5) | dmenu -p "Enter a number of paragraphs:" -l 5)
+
+curl -s -G --variable PARAGRAPH="$AMOUNT" --expand-url "$API" | tr -d '\n' | xclip -selection clipboard
