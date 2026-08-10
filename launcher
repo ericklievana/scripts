@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PROGRAMS="$HOME/.bin/programs"
+PROGRAM_LIST="$HOME/.bin/programFiles/list"
 
-SELECTION=$(dmenu -p 'Launcher:' -l -1 < "$PROGRAMS")
+SELECTION=$(dmenu -p 'Launcher:' -l -1 < "$PROGRAM_LIST")
 
 SELECTION=$(echo "$SELECTION" | cut -d ' ' -f 2)
 
