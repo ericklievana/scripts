@@ -1,0 +1,31 @@
+#!/bin/sh -x
+
+parseDirectory(){
+  tmp="${1# }"
+  echo "${tmp%/}"
+}
+
+selectBookmark(){
+
+  selection=$(cut -d ',' -f 1 "$BOOKMARK_DIR/$1" | dmenu -i -p "Choose a bookmark:" -l 10)
+
+  ${selection:?NULL}
+
+  case "$selection" in
+    */)
+      url=$(selectBookmark $(parseDirectory "$selection"))
+      ;;
+    *)
+      url=$(grep "$selection" "$BOOKMARK_DIR/$1" | cut -d ',' -f 2)
+      ;;
+  esac
+
+  echo "$url"
+}
+
+BOOKMARK_DIR="/home/darkskoll/.bin/bookmarks"
+
+TMP=$(selectBookmark "top")
+
+echo "${TMP:?NULL}" &
+# "$BROWSER" "${TMP:?NULL}" &
